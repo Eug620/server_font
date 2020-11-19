@@ -9,7 +9,7 @@
     "font:mkdir": "mkdir public && mkdir VITE_FONT",
     "forever:pru": "cd ./bin && forever start production.js",
     "font:clone": "npm run font:delete && cd VITE_FONT && git clone https://github.com/Eug620/vite.git && cd vite && yarn && yarn build",
-    "font:update": "npm run font:delete && cd VITE_FONT/ && cd vite/ && git pull && yarn && yarn build",
+    "font:update": "cd VITE_FONT/ && cd vite/ && git pull && yarn && yarn build",
     "font:copy": "npm run public:delete && cp -r ./VITE_FONT/vite/dist/* ./public/",
     "build:first": "npm run font:mkdir && npm run font:clone && npm run font:copy && npm run forever:pru",
     "build:update": "npm run public:delete && npm run font:update && npm run font:copy && npm run forever:pru"
