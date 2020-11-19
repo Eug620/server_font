@@ -5,9 +5,14 @@
   "scripts": {
     "start": "node ./bin/www",
     "font:delete": "rm -rf VITE_FONT/*",
-    "font:clone": "rm -rf VITE_FONT/* && cd VITE_FONT && git clone https://github.com/Eug620/vite.git && cd vite && yarn && yarn build",
-    "font:copy": "rm -rf public/* && cp -r ./VITE_FONT/vite/dist/* ./public/",
-    "d:c": "npm run font:clone && npm run font:copy"
+    "public:delete": "rm -rf public/*",
+    "font:mkdir": "mkdir public && mkdir VITE_FONT",
+    "forever:pru": "cd ./bin && forever start production.js",
+    "font:clone": "npm run font:delete && cd VITE_FONT && git clone https://github.com/Eug620/vite.git && cd vite && yarn && yarn build",
+    "font:update": "npm run font:delete && cd VITE_FONT/vite/ && git pull && yarn && yarn build",
+    "font:copy": "npm run public:delete && cp -r ./VITE_FONT/vite/dist/* ./public/",
+    "buid:first": "npm run font:mkdir && npm run font:clone && npm run font:copy && npm run forever:pru",
+    "buid:update": "npm run public:delete && npm run font:update && npm run font:copy && npm run forever:pru"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
