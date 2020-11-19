@@ -3,7 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "font:delete": "rm -rf VITE_FONT/*",
+    "font:clone": "rm -rf VITE_FONT/* && cd VITE_FONT && git clone https://github.com/Eug620/vite.git && cd vite && yarn && yarn build",
+    "font:copy": "rm -rf public/* && cp -r ./VITE_FONT/vite/dist/* ./public/",
+    "d:c": "npm run font:clone && npm run font:copy"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
